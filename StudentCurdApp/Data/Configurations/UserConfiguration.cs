@@ -10,6 +10,7 @@ namespace StudentCurdApp.Data.Configurations
         {
             builder.Property(u => u.Role)
                    .HasConversion<string>();
+                  
         }
     }
 }

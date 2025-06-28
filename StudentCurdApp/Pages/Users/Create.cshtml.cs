@@ -32,10 +32,12 @@ namespace StudentCurdApp.Pages.Users
             return Page();
         }
 
-        [BindProperty]
-        public User User { get; set; } = default!;
+        [BindProperty] 
+        public User User { get; set; } = default!; // Ensure User is initialized to avoid null reference errors
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        public string Password { get; set; } = string.Empty; // Property to hold the password input
+
+        // This method handles the form submission when the user clicks the "Create" button
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
