@@ -3,45 +3,98 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - StudentCurdApp</title>
+    <title>@ViewData["Title"] - Worldfa ERP</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/StudentCurdApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PersonalCurdOperation.styles.css" asp-append-version="true" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('/images/erp-background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .erp-logo {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+
+        .navbar-custom {
+            background-color: #2c3e50;
+        }
+
+            .navbar-custom .nav-link,
+            .navbar-custom .navbar-brand {
+                color: #ecf0f1;
+            }
+
+                .navbar-custom .nav-link:hover {
+                    color: #f39c12;
+                }
+
+        main {
+            flex: 1; /* This makes the main content grow to fill space */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">StudentCurdApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Worldfa ERP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Manufacturing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Merchandiser</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Po</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Challan Note</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Incentive</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Accounting</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Production</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">HR Complaints</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">QC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Naresh Store</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="#">Quit</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+        <img src="/images/worldfa-logo.png" class="erp-logo" alt="Worldfa Logo" />
+    </header>
+
+    <!-- MAIN CONTENT WITH FLEX GROW -->
+    <main>
+        <div class="container pb-3">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- STICKY FOOTER -->
+    <footer class="border-top footer text-muted bg-light">
         <div class="container">
-            &copy; 2025 - StudentCurdApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2025 - Worldfa ERP - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
