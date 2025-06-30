@@ -24,15 +24,31 @@
 
 //app.Run();
 
-using StudentCrudApp.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using StudentCrudApp.Data;
+using StudentCurdApp.Areas.Identity.Data;
+using StudentCurdApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
+// Register the DbContext with the connection string from configuration 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Register the Identity services with the custom user class 
+builder.Services.AddDbContext<StudentCurdAppContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add Identity services with custom user class and roles
+builder.Services.AddDefaultIdentity<StudentCurdAppUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<StudentCurdAppContext>();
+
 
 var app = builder.Build();
 
