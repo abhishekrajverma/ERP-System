@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using StudentCrudApp.Data;
 using StudentCurdApp.Models;
 
 namespace StudentCurdApp.Pages.Users
@@ -19,11 +13,33 @@ namespace StudentCurdApp.Pages.Users
             _context = context;
         }
 
-        public IList<User> User { get;set; } = default!;
+        // This list will store users for the current page only
+        public IList<User> User { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        // Tracks the current page number
+        public int CurrentPage { get; set; }
+
+        // Total number of pages
+        public int TotalPages { get; set; }
+
+        // Number of users to display per page
+        private const int PageSize = 50;
+
+        // Called automatically on page load
+        public async Task OnGetAsync(int? pagenum)
         {
-            User = await _context.Users.ToListAsync();
+            int currentPage = pagenum ?? 1;
+            CurrentPage = currentPage;
+
+            var totalUsers = await _context.Users.CountAsync();
+            TotalPages = (int)Math.Ceiling(totalUsers / (double)PageSize);
+
+            User = await _context.Users
+                .OrderBy(u => u.Id)
+                .Skip((currentPage - 1) * PageSize)
+                .Take(PageSize)
+                .ToListAsync();
         }
+
     }
 }

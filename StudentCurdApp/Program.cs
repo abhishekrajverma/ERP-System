@@ -29,6 +29,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentCrudApp.Data;
 using StudentCurdApp.Areas.Identity.Data;
 using StudentCurdApp.Data;
+using StudentCurdApp.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,18 @@ builder.Services.AddDefaultIdentity<StudentCurdAppUser>(options =>
 
 
 var app = builder.Build();
+
+// SEED 10,000 users only if empty
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    if (!context.Users.Any())
+    {
+        var users = DataSeeder.GenerateUsers(10000);
+        context.Users.AddRange(users);
+        context.SaveChanges();
+    }
+}
 
 app.UseStaticFiles();
 app.UseRouting();

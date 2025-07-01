@@ -1,6 +1,6 @@
 ﻿
 using StudentCurdApp.Enums;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations; // This is a common namespace for data annotations in .NET
 
 namespace StudentCurdApp.Models
 {
@@ -10,8 +10,9 @@ namespace StudentCurdApp.Models
 
         public string Name { get; set; } = string.Empty; // Default value to avoid null reference errors
 
-        public UserRole Role { get; set; } = UserRole.User; // Default role is User
+       // public UserRole Role { get; set; } = UserRole.User; // Default role is User this is come from UserRole enum
 
+        public UserRole Role { get; set; } // this will be configured in UserConfiguration.cs
 
         [Required]
         [StringLength(20, MinimumLength =4)]

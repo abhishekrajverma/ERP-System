@@ -11,7 +11,7 @@ namespace StudentCrudApp.Data
             : base(options) { }
 
         public DbSet<Student> Students { get; set; }
-        public DbSet<User> Users { get; set; } // if you have User.cs too
+        public DbSet<User> Users { get; set; } // if you have two DbSets, ensure they are properly configured
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
