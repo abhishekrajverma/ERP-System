@@ -24,10 +24,8 @@
 
 ////app.Run();
 
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StudentCrudApp.Data;
-using StudentCurdApp.Data;
 using StudentCurdApp.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
