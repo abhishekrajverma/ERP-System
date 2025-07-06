@@ -2,13 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering; // Required for SelectList
-using StudentCrudApp.Data;
 using StudentCurdApp.Enums; // Import enum namespace
 using StudentCurdApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StudentCurdApp.Pages.Users
 {
